@@ -106,17 +106,17 @@
                     {{#with (lookup ../data.data.effort id) as |eff|}}
                     <div class="resource effort {{id}}">
                         <label for="data.effort.{{id}}.value" class="resource-label {{eff.die}} rollable"
-                            data-roll='1{{eff.die}}+{{eff.value}}'
-                            data-label='{{localize (icrpg-concat "ICRPG.Effort" (icrpg-capitalize id))}}'>
+                               data-roll='1{{eff.die}}+{{eff.value}}'
+                               data-label='{{localize (icrpg-concat "ICRPG.Effort" (icrpg-capitalize id))}}'>
                             {{localize (icrpg-concat "ICRPG.Effort" (icrpg-capitalize id))}}
                         </label>
                         <div class="resource-content flexrow flex-center flex-between">
                             <span class="value"
-                                name="data.effort.{{id}}.value">{{numberFormat eff.value decimals=0 sign=false}}</span>
+                                  name="data.effort.{{id}}.value">{{numberFormat eff.value decimals=0 sign=false}}</span>
                             <input type="text" name="data.effort.{{id}}.base" value="{{eff.base}}"
-                                data-dtype="Number" />
+                                   data-dtype="Number" />
                             <input type="text" name="data.effort.{{id}}.loot" value="{{eff.loot}}"
-                                data-dtype="Number" />
+                                   data-dtype="Number" />
                         </div>
                     </div>
                     {{/with}}
@@ -125,18 +125,20 @@
                     {{!-- Header --}}
                     <div class="resource armor resource-header">
                         <span class="header">
-                            <!--{{localize "ICRPG.Defense"}}--></span>
+                            <!--{{localize "ICRPG.Defense"}}-->
+                        </span>
                     </div>
 
                     {{!-- Armor --}}
                     <div class="resource armor">
                         <label for="data.armor.value" class="resource-label rollable"
-                            data-roll='1d20+{{icrpg-sum data.data.stats.con.value data.data.armor.loot}}'
-                            data-label='{{localize "ICRPG.Defense"}}'>
-                            {{localize "ICRPG.Defense"}} </label>
+                               data-roll='1d20+{{icrpg-sum data.data.stats.con.value data.data.armor.loot}}'
+                               data-label='{{localize "ICRPG.Defense"}}'>
+                            {{localize "ICRPG.Defense"}}
+                        </label>
                         <div class="resource-content flexrow flex-center flex-between">
-                            <span class="value">{{icrpg-sum data.data.stats.con.value data.data.armor.loot}}</span>
-                            <span class="base">{{data.data.stats.con.value}}</span>
+                            <span class="value">{{icrpg-sum data.data.armor.base data.data.armor.loot}}</span>
+                            <input type="text" name="data.armor.base" value="{{data.data.armor.base}}" data-dtype="Number" />
                             <input type="text" name="data.armor.loot" value="{{data.data.armor.loot}}" data-dtype="Number" />
                         </div>
                     </div>
@@ -144,7 +146,8 @@
                     {{!-- Header --}}
                     <div class="resource health resource-header">
                         <span class="header">
-                            <!--{{localize "ICRPG.Health"}}--></span>
+                            <!--{{localize "ICRPG.Health"}}-->
+                        </span>
                     </div>
 
                     {{!-- HP --}}
@@ -152,27 +155,38 @@
                         <label for="data.health.value" class="resource-label"> {{localize "ICRPG.HP"}} </label>
                         <div class="resource-content flexrow flex-center flex-between">
                             <input type="text" name="data.health.value" value="{{data.data.health.value}}"
-                                data-dtype="Number" />
+                                   data-dtype="Number" />
                             <span class="separator">/</span>
                             <input type="text" name="data.health.max" value="{{data.data.health.max}}" data-dtype="Number" />
+                        </div>
+                    </div>
+                    {{!-- MANA --}}
+                    <div class="resource health">
+                        <label for="data.mana.value" class="resource-label"> {{localize "ICRPG.MANA"}} </label>
+                        <div class="resource-content flexrow flex-center flex-between">
+                            <input type="text" name="data.mana.value" value="{{data.data.mana.value}}"
+                                   data-dtype="Number" />
+                            <span class="separator">/</span>
+                            <input type="text" name="data.mana.max" value="{{data.data.mana.max}}" data-dtype="Number" />
                         </div>
                     </div>
 
                     {{!-- Header --}}
                     <div class="resource death resource-header">
                         <span class="header">
-                            <!--{{localize "ICRPG.Death"}}--></span>
+                            <!--{{localize "ICRPG.Death"}}-->
+                        </span>
                     </div>
 
                     {{!-- Death --}}
                     <div class="resource death">
-                        <label for="data.dying.value" class="resource-label death-d4 rollable" data-roll='1d4'
-                            data-label='{{localize "ICRPG.Dying"}}'>{{localize "ICRPG.Dying"}}</label>
+                        <label for="data.dying.value" class="resource-label death-d6 rollable" data-roll='1d6'
+                               data-label='{{localize "ICRPG.Dying"}}'>{{localize "ICRPG.Dying"}}</label>
                         <div class="resource-content flexrow flex-center flex-between">
                             <input type="text" name="data.dying.value" value="{{data.data.dying.value}}"
-                                data-dtype="Number" />
+                                   data-dtype="Number" />
                             <a class="resource-label revive rollable" data-roll='1d20'
-                                data-label='{{localize "ICRPG.Revive"}}'>{{localize "ICRPG.Revive"}}</a>
+                               data-label='{{localize "ICRPG.Revive"}}'>{{localize "ICRPG.Revive"}}</a>
                         </div>
                     </div>
 
